@@ -1,7 +1,21 @@
-version: "1.0"
+version: "1.2"
 services:
+  postgres-db:
+    image: postgres:11.2-alpine
+    ports:
+      - 5344:5432
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - database-postgre:/var/lib/postgresql/data
+
   app:
-    build: . 
+    build: 
+      context: .
+    environment:
+      PORT: 3030 
     depends_on:
       - postgres-db
     ports:
@@ -9,10 +23,7 @@ services:
     expose:
       - 3030
 
-  postgres-db:
-    image: postgres:11.2-alpine
-    environment:  
-    environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+volumes:
+  database-postgre:
+
+

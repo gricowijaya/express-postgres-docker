@@ -5,7 +5,7 @@ const {
     DB_NAME, 
     DB_PASSWORD,
     DB_HOST,
-    DB_DIALECT = postgres
+    DB_DIALECT = 'postgres'
 } = process.env
 
 module.exports = {
