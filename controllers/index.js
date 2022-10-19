@@ -21,7 +21,7 @@ module.exports = {
             //     username: randomName
             // });
             //
-            fs.writeFileSync("../data/data.json", JSON.stringify(randomName));  
+            fs.writeFileSync('../data.json', JSON.stringify(randomName));  
 
             return res.status(200).json({
                 status: true,
@@ -36,12 +36,12 @@ module.exports = {
     showData : async (req, res, next) => { 
         try {
             // const user = await Users.findAll();
-            const user = fs.readFileSync("../data/data.json");  
+            const user = fs.readFileSync("../data.json");  
 
             return res.status(200).json({
                 status: true,
                 message: 'berhasil',
-                data: user
+                data: JSON.parse(user)
             });
         } catch (err) {
             next(err);
