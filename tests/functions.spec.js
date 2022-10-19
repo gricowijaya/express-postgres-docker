@@ -1,4 +1,4 @@
-const controller = require('../controller/index.js');
+const controller = require('../controllers/');
 const mockRequest = (body={}) => ({ body })
 const mockResponse =  () => {
     const res = {}
